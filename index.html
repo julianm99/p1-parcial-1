@@ -1,41 +1,44 @@
-<!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <!-- Reemplazar por los datos que correspondan -->
-        <title>Programación I | Parcial 1 | APELLIDO, NOMBRE | APELLIDO, NOMBRE</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
-        <link rel="shortcut icon" href="favicon.ico" />
-        <link rel="stylesheet" href="styles/styles.css" />
-    </head>
-    <body>
-        <header>
-            <!-- Reemplazar por los datos que correspondan -->
-            <h1>Programación I | Parcial 1 | APELLIDO, NOMBRE | APELLDIO, NOMBRE</h1>
-        </header>
-        <main>
-            <h2>Mis discos</h2>
+<head>
+    <meta charset="utf-8" />
+    <!-- Reemplazar por los datos que correspondan -->
+    <title>Programación I | Parcial 1 | APELLIDO, NOMBRE | APELLIDO, NOMBRE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Programación I | Parcial 1 | ALONSO, JULIAN MARTIN </h1>
+    </header>
+    <main>
+        <h2>Mis discos</h2>
+        <div>
             <button onclick="cargar();">Cargar nuevo disco</button>
             <button onclick="mostrar();">Mostrar discos</button>
-            <div id="discos">
-                <!--
-                    Aca podrian mostrar los discos
-                -->
-            </div>
-            <script src="scripts/index.js"></script>
-        </main>
-        <footer>
-            <ul>
-                <li>Profesor Fabrizio Carlassara</li>
-                <li>
-                    <a href="mailto:fabrizio.carlassara@davinci.edu.ar?subject=P1%20-%20Consulta%20-%20DW2[M|T|N][A|B]%20-%20Apellido,%20Nombre" target="_blank">fabrizio.carlassara@davinci.edu.ar</a>
-                </li>
+            <button onclick="buscar_id();">Buscar por ID</button>
+            <button onclick="Cargar_json();">Mostrar discos del JSON</button>
+            <select id="ordenarSelect">
+                <option value="">Ordenar discos</option>
+                <option value="asc">Duración (Ascendente)</option>
+                <option value="desc">Duración (Descendente)</option>
+            </select>
+        </div>
+        <div class="galeria" id="discos"></div>
+        <div id="contadorDiscos"></div>
+    </main>
+    <footer>
+        <ul>
+            <li>Profesor Fabrizio Carlassara</li>
+            <li>
+                <a href="mailto:fabrizio.carlassara@davinci.edu.ar">fabrizio.carlassara@davinci.edu.ar</a>
                 <li>Programación 1</li>
                 <li>
-                    <!-- Reemplazar por el link del repositorio de GitHub -->
-                    <a href="#">URL del repo de GitHub</a>
+                    <a href="https://github.com/julianm99/p1-parcial-1">https://github.com/julianm99/p1-parcial-1</a>
                 </li>
-            </ul>
-        </footer>
-    </body>
+            </li>
+        </ul>
+    </footer>
+    <script src="scripts/index.js"></script>
+</body>
 </html>

@@ -45,7 +45,7 @@ Cualquier faltante de los requisitos que se presentan a continuación, hará que
         - Al finalizar la carga de una pista, se debe confirmar si se desea ingresar otra más.
         - Cuando el usuario decide dejar de cargar pistas, finaliza la acción de la función.
     - En todo caso debe validarse que los datos ingresados sean válidos:
-        - El nombre del disco, autor/banda y nombre de la pista no pueden quedar vacíos.
+        - El nombre del disco , autor/banda y nombre de la pista no pueden quedar vacíos.
         - El código numérico único del disco no puede ser menor a 1, ni mayor a 999.
         - La duración de cada pista debe estar entre 0 y 7200 (segundos) inclusive.
 

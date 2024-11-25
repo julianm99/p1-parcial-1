@@ -1,259 +1,161 @@
-/**
- * Versión 1.0.0
- */
 @charset "utf-8";
+/** Fuentes */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
-/**
- * Fonts
- */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
 
-/**
- * Mobile
- */
-
-/** General */
-html {
-    box-sizing: border-box;
-}
-
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
-* {
+html, body {
     margin: 0;
     padding: 0;
-    font-size: 10px;
-    line-height: 1;
+    height: 100%;
+    width: 100%;
+    background-color: #070707;
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
 }
 
-/** Body */
-body {
-    background-color: #2977a4;
-    color: #D0E0E3;
-}
-
-/** Header */
 header {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 2em;
+    background-color: #1db954;
 }
 
-/** Encabezados */
-h1,
-h2 {
-    font-family: 'Montserrat';
-    font-size: 3.6em;
-    line-height: 1.5;
+h1, h2 {
     font-weight: 700;
     text-align: center;
 }
 
 h2 {
     font-size: 3em;
-    color: #2977a4;
+    color: #1db954;
 }
 
-/** Main */
 main {
+    min-height: calc(100vh - 8em);
+    padding: 2em;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 4em 2em;
-    background-color: #FFF;
+    align-items: center;
+    background-color: #070707;
 }
 
-main p {
-    font-size: 2.4em;
-    line-height: 1.5;
-    text-align: left;
-    color: #2977a4;
-}
-
-main p strong, 
-main p em {
-    font-size: 1em;
-}
-
-main p strong {
-    font-weight: 700;
-}
-
-main p em {
-    font-style: italic;
-}
-
-main ul {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-items: flex-start;
-    width: 100%;
-}
-
-main ul li {
-    margin-left: 2em;
-    font-size: 2.4em;
-    line-height: 1.5;
-    text-align: left;
-    color: #1A4A5E;
-}
-
-main ul li strong,
-main ul li em {
-    font-size: 1em;
-}
-
-main ul li strong {
-    font-weight: 700;
-}
-
-main ul li em {
-    font-style: italic;
-}
-
-main button {
-    margin: .5em 0;
-    border: none;
-    border-radius: .5em;
-    padding: .25em .5em;
-    background: #2977a4;
+button, select {
+    background-color: #1db954;
+    color: white;
+    padding: 1em;
+    margin: 1em;
+    font-size: 1.5em;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 2.4em;
-    line-height: 1.5;
-    text-align: center;
-    color: #D0E0E3;
+    border: none;
+    transition: background-color 0.3s ease;
 }
 
 main div.galeria {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1em 0;
-    width: 100%;
-    padding: 1em;
-    background: rgba(19,79,92,.5);
-}
-
-main div.galeria > img {
-    max-width: 90%;
-    margin: 1em 5%;
-}
-
-main div.galeria > span {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    width: 5em;
-    height: 5em;
+    gap: 2em;
+    margin-top: 3em;
 }
 
-main div.galeria div {
+main div.galeria > div {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    width: 90%;
-    padding: 1em;
-}
-
-main div.galeria div img {
-    width: 100%;
-}
-
-main div.galeria div h3 {
-    padding: .5em;
-    font-size: 3.2em;
-    text-align: center;
-    color: #134F5C;
-}
-
-main div.galeria div p {
-    padding: 1em;
-    font-size: 1.6em;
-    text-align: center;
-}
-
-main hr {
-    margin: 1em 0%;
-    width: 100%;
-    height: .1em;
-}
-
-/** Footer */
-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 100%;
     padding: 2em;
-    
+    color: #000000;
+    border-radius: 15px;
+    width: 40%; 
+    max-width: 400px; 
+    transition: transform 0.3s ease;
+}
+
+main div.galeria img {
+    width: 100%; 
+    height: auto;
+    max-height: 250px;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    object-fit: cover;
+}
+
+main div.galeria h3 {
+    font-size: 1.8em;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+main div.galeria p {
+    font-size: 1.4em;
+    text-align: center;
+    margin: 0.5em 0;
+    word-wrap: break-word; 
+}
+
+#contadorDiscos {
+    font-size: 3em; 
+    color: #1db954;
+    font-weight: 700;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.album-card {
+    display: inline-block;
+    margin: 15px;
+    vertical-align: top;
+}
+
+.card {
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-body {
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.text-success {
+    color: green;
+}
+
+.lista-canciones {
+    list-style: none;
+    padding:0
+}
+
+footer {
+    background-color: #1db954;
+    color: #ffffff;
+    padding: 1.5em 0;
+    text-align: center;
 }
 
 footer ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
     list-style: none;
-}
-
-footer ul li {
-    font-family: 'Montserrat';
-    font-size: 1.4em;
-    line-height: 1.5;
-    text-align: center;
+    padding: 0;
 }
 
 footer ul li a {
-    font-family: 'Montserrat';
-    font-size: 1em;
+    color: #d0e0e3;
     text-decoration: none;
-    color: #D0E0E3;
 }
 
 footer ul li a:hover {
     color: #a2c4c9;
 }
 
-/** Overs */
-main button:hover {
-    opacity: .8;
-}
 
-/**
- * Web
- */
 @media screen and (min-width: 960px) {
-
-    /** Main */
-    main div.galeria {
-        flex-direction: row;
+    main div.galeria > div {
+        width: 30%; 
     }
-
-    main div.galeria > img {
-        max-width: 24%;
-        margin: 1em .5%;
-    }
-
-    main div.galeria div {
-        align-self: flex-start;
-        width: 30%;
-    }
-
-    /** Footer */
-    footer ul {
-        flex-direction: row;
-    }
-
 }
