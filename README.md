@@ -37,6 +37,7 @@ Cualquier faltante de los requisitos que se presentan a continuación, hará que
 - Al hacer clic en el botón "Cargar nuevo disco" se debe disparar la función `cargar` que solicita al usuario la siguiente información de un disco:
     - Nombre del disco.
     - Autor o banda del disco.
+    - Portada (link a una imagen).
     - Código numérico único del disco:
         - Si el usuario ingresa un código numérico que ya fue cargado, se deberá pedir otro código (hasta ingresar uno que no haya sido utilizado anteriormente).
     - Todas las pistas del disco, donde cada pista tiene un nombre y una duración:
