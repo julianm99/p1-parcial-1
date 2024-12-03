@@ -1,10 +1,10 @@
 'use strict';
 
 class Album {
-    constructor(nombre, artista, codigo, portada) {
+    constructor(nombre, artista, id, portada) {
         this.nombre = nombre;
         this.artista = artista;
-        this.codigo = codigo;
+        this.id = id;
         this.portada = portada;
         this.pistas = [];
     }
@@ -34,7 +34,7 @@ class Album {
     tiempo(segundos) {
         const hs = Math.floor(segundos / 3600);
         const min = Math.floor((segundos % 3600) / 60);
-        const seg = segundos % 60;
+        const seg = Math.floor(segundos % 60); // Asegúrate de redondear los segundos
         return `${hs.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
     }
 
@@ -46,7 +46,7 @@ class Album {
                     <div class="card-body">
                         <h3 class="card-title">${this.nombre}</h3>
                         <p class="nombre_artista">${this.artista}</p>
-                        <p class="disco_id">Código: ${this.codigo}</p>
+                        <p class="disco_id">Código: ${this.id}</p> <!-- Cambiado a this.id -->
                         <ul class="lista-canciones">`;
     
         this.pistas.forEach(pista => {
@@ -75,11 +75,11 @@ class Pista {
 }
 
 let discoscargados = [];
-
-function cargar() {
+let discosJSON = [];
+async function cargar() {
     const nombre = pedirDato("Ingrese el nombre del disco:");
     const artista = pedirDato("Ingrese el nombre del artista o de la banda:");
-    const codigo = pedirCodigo();
+    const codigo = await pedirCodigo(); // Llamada asíncrona
     const portada = pedirDato("Ingrese el URL de la portada:");
     const nuevoAlbum = new Album(nombre, artista, codigo, portada);
 
@@ -102,15 +102,44 @@ function mostrar() {
 
 /* VALIDACIONES */
 function buscar_id() {
-    const codigo = parseInt(prompt("Ingrese el código del disco a buscar:"));
-    const disco = discoscargados.find(album => album.codigo === codigo);
+    const id = parseInt(prompt("Ingrese el código del disco a buscar:"));
+
+    if (isNaN(id)) {
+        alert("Por favor, ingrese un código válido.");
+        return;
+    }
+
+    // Buscar en discos cargados
+    const disco = discoscargados.find(album => album.id === id);
+
     const contenedor = document.getElementById("discos");
 
     if (disco) {
         contenedor.innerHTML = disco.toHTML();
         alert(`Disco encontrado:\nNombre: ${disco.nombre}\nArtista: ${disco.artista}`);
     } else {
-        alert("No se encontró un disco con ese código.");
+        // Si no está en discos cargados, buscar en el JSON inicial
+        fetch('discos.json')
+            .then(response => response.json())
+            .then(data => {
+                const discoJSON = data.find(album => album.id === id);
+                if (discoJSON) {
+                    // Crear un objeto Album con la información del JSON
+                    const discoEncontrado = new Album(discoJSON.nombre, discoJSON.artista, discoJSON.id, discoJSON.portada);
+                    discoJSON.pistas.forEach(pista => {
+                        discoEncontrado.agregarPista(new Pista(pista.nombre, pista.duracion));
+                    });
+
+                    contenedor.innerHTML = discoEncontrado.toHTML();
+                    alert(`Disco encontrado:\nNombre: ${discoEncontrado.nombre}\nArtista: ${discoEncontrado.artista}`);
+                } else {
+                    alert("No se encontró un disco con ese código.");
+                }
+            })
+            .catch(error => {
+                console.error("Error al buscar en el JSON:", error);
+                alert("Ocurrió un error al buscar el disco.");
+            });
     }
 }
 
@@ -126,16 +155,31 @@ function pedirDato(msg) {
     } while (true);
 }
 
-function pedirCodigo() {
+async function pedirCodigo() {
     let codigo;
+    let idsExistentes = [];
+
+    // Cargar IDs del JSON dinámicamente para validarlos
+    try {
+        const response = await fetch('discos.json');
+        const data = await response.json();
+        idsExistentes = data.map(disco => disco.id);
+    } catch (error) {
+        console.error("Error al cargar discos del JSON:", error);
+        alert("No se pudo validar con los discos del JSON. Verifique su conexión.");
+    }
+
     do {
         codigo = parseInt(prompt("Ingrese el código numérico único del disco (entre 1 y 999):"));
         if (isNaN(codigo) || codigo < 1 || codigo > 999) {
             alert("El código debe ser un número entre 1 y 999.");
-        } else if (discoscargados.some(album => album.codigo === codigo)) {
-            alert("Este código ya fue ingresado. Por favor, ingrese otro.");
+        } else if (
+            discoscargados.some(album => album.id === codigo) || 
+            idsExistentes.includes(codigo)
+        ) {
+            alert("Este código ya existe en los discos cargados o en los datos del JSON. Por favor, ingrese otro.");
         } else {
-            return codigo;
+            return codigo; // Código válido y único
         }
     } while (true);
 }
@@ -159,32 +203,44 @@ function ContadorDiscos() {
 
 function Cargar_json() {
     fetch('discos.json')
-        .then(response => {
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
+            let html = '';
             data.forEach(disco => {
-                const nuevoAlbum = new Album(disco.nombre, disco.artista, disco.codigo, disco.portada);
+                // Crear un objeto Album a partir de los datos del JSON
+                const nuevoAlbum = new Album(disco.nombre, disco.artista, disco.id, disco.portada);
                 disco.pistas.forEach(pista => {
                     nuevoAlbum.agregarPista(new Pista(pista.nombre, pista.duracion));
                 });
-                discoscargados.push(nuevoAlbum);
+
+                // Agregar el disco a discoscargados
+                if (!discoscargados.some(album => album.id === nuevoAlbum.id)) {
+                    discoscargados.push(nuevoAlbum);
+                }
+
+                html += nuevoAlbum.toHTML();
             });
-            mostrar(); 
+
+            // Mostrar los discos en la galería
+            const contenedor = document.getElementById("discos");
+            contenedor.innerHTML = html;
+            alert("Se han mostrado los discos del JSON.");
+
+            // Actualizar el contador de discos
+            ContadorDiscos();
         })
         .catch(error => {
             console.error("Error al cargar discos del JSON:", error);
-            alert("Hubo un error al cargar los discos.");
+            alert("Hubo un error al cargar los discos del JSON.");
         });
 }
-
 function ordenarDiscos(orden) {
     if (orden === 'asc') {
         discoscargados.sort((a, b) => a.duracionTotal() - b.duracionTotal());
     } else if (orden === 'desc') {
         discoscargados.sort((a, b) => b.duracionTotal() - a.duracionTotal());
     }
-    mostrar();
+    mostrar(); // Actualiza la galería después de ordenar
 }
 
 
