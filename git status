@@ -1,0 +1,89 @@
+[33mcommit ad59f47e328215916d488d40244ac9fb14088425[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: julianm99 <julianmalonso99@gmail.com>
+Date:   Tue Dec 3 15:13:16 2024 -0300
+
+    segundo cambio
+
+[33mcommit b64ed8b40ac1ef3ce9be0c6032c86d0326210497[m
+Author: julianm99 <julianmalonso99@gmail.com>
+Date:   Mon Nov 25 13:07:50 2024 -0300
+
+    primer cambio
+
+[33mcommit 36d788d27ae00e7c00a5041124f3a7247cb4a194[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 22:20:33 2024 -0300
+
+    chore: instrucciones
+
+[33mcommit 328281e346ec29459fa71cfac628f8ddd1ade513[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 22:20:25 2024 -0300
+
+    chore: elimino templates de clases
+
+[33mcommit cff67bc766a34bb489d8047e28005115d3b670cc[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 20:01:08 2024 -0300
+
+    chore: archivo de configuracion de replit
+
+[33mcommit 066b42c425b38065ada13867476ed9c8379cece7[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 19:57:35 2024 -0300
+
+    chore: corrijo rutas
+
+[33mcommit dac712618f4a5631baa693cef578c7a03ff73437[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 19:56:55 2024 -0300
+
+    chore: muevo a directorio de estilos
+
+[33mcommit 62462257a7f87ebb4b2e95e4c953b32109112ed6[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 19:56:20 2024 -0300
+
+    chore: muevo index.js a directorio de scripts
+
+[33mcommit d093bf95a7306942c98de439e5fc0dbdcf12eaba[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 19:55:52 2024 -0300
+
+    chore: template para clases
+
+[33mcommit b0845b4d51ac223825bc446d9ed16aed8f73f68f[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 19:53:53 2024 -0300
+
+    chore: comentarios y generalidades
+
+[33mcommit ddd593fcc853f02e3344b4a5b9958a8b16fd0126[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 19:53:36 2024 -0300
+
+    chore: cambio background color
+
+[33mcommit 941ffdba33897c5d1a670e261c096452d3a310b8[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 19:47:16 2024 -0300
+
+    chore: json de ejemplo
+
+[33mcommit 1a1b67748703363f838005f6b8824b2dcc821737[m
+Author: Fabrizio Carlassara <fabrizio.carlassara@gmail.com>
+Date:   Mon May 6 19:12:31 2024 -0300
+
+    chore: comentarios
+
+[33mcommit 099c35aa3d4d71f5113827a09dba26c4a9ccb803[m
+Author: Fabrizio Carlassara <53102151+carlassaraf@users.noreply.github.com>
+Date:   Fri Mar 18 23:30:31 2022 -0300
+
+    Create README.md
+
+[33mcommit 742622fe15265f4e9312b3e8bc9c1f28f6f770c5[m
+Author: Fabrizio Carlassara <53102151+carlassaraf@users.noreply.github.com>
+Date:   Fri Mar 18 23:04:08 2022 -0300
+
+    Add files via upload
