@@ -34,7 +34,7 @@ class Album {
     tiempo(segundos) {
         const hs = Math.floor(segundos / 3600);
         const min = Math.floor((segundos % 3600) / 60);
-        const seg = Math.floor(segundos % 60); // Asegúrate de redondear los segundos
+        const seg = Math.floor(segundos % 60); 
         return `${hs.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
     }
 
